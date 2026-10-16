@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="docs/assets/cover.svg" alt="Gesture Racing — Drive by instinct" width="100%" />
+<h1>GESTURE / RACING</h1>
+<p><strong>Drive by instinct.</strong><br/>A camera-powered controller that turns hand gestures into game inputs.</p>
 
 <p>
   <a href="https://website-jet-tau-52.vercel.app/"><strong>Open the project website ↗</strong></a>
@@ -30,7 +31,7 @@ Move your hands. See each pose recognized. Steer, accelerate, reverse, brake, an
 
 ## See the project
 
-These camera-free captures show the current website and cockpit. The cockpit preview is in standby; camera access is only requested when a player chooses to enable it.
+Project screenshots show the website and cockpit in camera standby. The cockpit asks for camera access only after a player chooses to enable it.
 
 <table>
   <tr>
@@ -122,7 +123,7 @@ flowchart LR
 | Area | Stack |
 |---|---|
 | Web interface | Next.js 16, React 19, TypeScript, Tailwind CSS 4 |
-| Motion and 3D | Framer Motion, Three.js, React Three Fiber, Drei, Lucide |
+| Motion and 3D | Framer Motion, Three.js, React Three Fiber, Lucide |
 | Browser vision | MediaPipe Tasks Vision, <code>getUserMedia</code>, Canvas overlays |
 | Windows vision | Python 3.12, OpenCV, MediaPipe, NumPy |
 | Desktop controls | Tkinter, PyAutoGUI, Windows <code>SendInput</code> |

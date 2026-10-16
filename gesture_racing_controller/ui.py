@@ -1,17 +1,8 @@
 """
-ui.py — Cinematic Cyberpunk Dashboard, Offline 2D Track & Telemetry Hub (v3.0 Ultra)
-══════════════════════════════════════════════════════════════════════════════════
-Features:
-  • Real-time OpenCV video stream with glowing neural landmark HUD & dual-hand tracking
-  • Animated Sci-Fi Digital Steering Wheel & Orientation Radar (60 FPS Sub-pixel)
-  • Interactive Game Hub with dynamic profiles & visual hand blueprints
-  • Built-in Offline 2D Canvas Racetrack with physics for instant testing
-  • Compact Floating Picture-in-Picture (PiP) Mini-HUD Mode
-  • Live Camera Device Selector & Instant Audio Mute Toggle
-  • 1-Click 3-Second Dynamic Calibration Wizard with Holographic Reticle
-  • In-App Custom Game Creator & Key Remapping
-  • Batched single-event UI dispatch loop for zero lag & maximum smoothness
-  • Fast Win32 Direct Window Activation & Spacebar Master Shortcut
+Gesture Racing desktop cockpit and offline practice track.
+
+Windows desktop application for webcam hand tracking, gesture telemetry,
+game profiles, camera selection, calibration, and offline driving practice.
 """
 
 import tkinter as tk
@@ -116,9 +107,9 @@ class OfflineRaceTrack:
         c = self.canvas
         c.delete("all")
 
-        c.create_rectangle(0, 0, self.w, self.h, fill="#080D18", outline="")
-        c.create_polygon(self.outer_poly, fill="#121B2F", outline=NEON_CYAN, width=2)
-        c.create_polygon(self.inner_poly, fill="#080D18", outline=NEON_PURPLE, width=2)
+        c.create_rectangle(0, 0, self.w, self.h, fill=BG_DEEP, outline="")
+        c.create_polygon(self.outer_poly, fill=BG_CARD, outline=NEON_CYAN, width=2)
+        c.create_polygon(self.inner_poly, fill=BG_DEEP, outline=NEON_PURPLE, width=2)
         c.create_line(120, 150, 120, 195, fill=NEON_GOLD, width=3, dash=(4, 4))
 
         cx, cy = self.car_x, self.car_y
@@ -151,7 +142,7 @@ class OfflineRaceTrack:
 
 
 class AppUI:
-    """Cyberpunk Neural HUD, Mini-HUD (PiP), and Game Hub Interface."""
+    """Gesture Racing cockpit, picture-in-picture view, and game profile interface."""
 
     def __init__(self, root: tk.Tk, engine, controller: GameController) -> None:
         self.root = root
@@ -289,7 +280,7 @@ class AppUI:
         self._build_stats_or_track_panel(self._right)
 
     def _build_game_hub(self, parent: tk.Frame) -> None:
-        card = self._card(parent, "🎮  NEURAL GAME LAUNCHER & PROFILES")
+        card = self._card(parent, "🎮  GAME LAUNCHER & PROFILES")
 
         sel_row = tk.Frame(card, bg=BG_CARD)
         sel_row.pack(fill="x", pady=(2, 4))
@@ -311,7 +302,7 @@ class AppUI:
 
         self._launch_btn = tk.Button(
             btn_row, text="🚀 Launch Game", bg=NEON_PURPLE, fg=TEXT_TITLE,
-            activebackground="#5E17EB", font=("Consolas", 8, "bold"),
+            activebackground=NEON_PURPLE, font=("Consolas", 8, "bold"),
             relief="flat", padx=8, pady=4, cursor="hand2", command=self._launch_game
         )
         self._launch_btn.pack(side="left", padx=(0, 4))
@@ -368,7 +359,7 @@ class AppUI:
                 break
 
     def _build_status_panel(self, parent: tk.Frame) -> None:
-        card = self._card(parent, "⚡ NEURAL GESTURE TELEMETRY")
+        card = self._card(parent, "⚡ GESTURE TELEMETRY")
 
         self._gesture_label = tk.Label(
             card, text="⬛  IDLE / READY", bg=BG_CARD, fg=TEXT_MUTED,
@@ -444,14 +435,14 @@ class AppUI:
 
         self._start_btn = tk.Button(
             btn_row, text="▶  START CONTROLLER", bg=NEON_GREEN, fg=BG_DEEP,
-            activebackground="#00B85C", font=("Consolas", 10, "bold"),
+            activebackground=NEON_GREEN, font=("Consolas", 10, "bold"),
             relief="flat", padx=14, pady=6, cursor="hand2", command=self.start
         )
         self._start_btn.pack(side="left", padx=(0, 6))
 
         self._stop_btn = tk.Button(
             btn_row, text="■  STOP", bg=NEON_RED, fg=TEXT_TITLE,
-            activebackground="#CC0033", font=("Consolas", 10, "bold"),
+            activebackground=NEON_RED, font=("Consolas", 10, "bold"),
             relief="flat", padx=14, pady=6, cursor="hand2", state="disabled", command=self.stop
         )
         self._stop_btn.pack(side="left")
@@ -510,7 +501,7 @@ class AppUI:
             w.destroy()
 
         card = self._card(self._stats_container, "🏎️ BUILT-IN OFFLINE 2D RACING SIMULATOR")
-        self._track_canvas = tk.Canvas(card, width=540, height=210, bg="#080D18", highlightthickness=0)
+        self._track_canvas = tk.Canvas(card, width=540, height=210, bg=BG_DEEP, highlightthickness=0)
         self._track_canvas.pack(fill="both", expand=True)
         self.offline_sim = OfflineRaceTrack(self._track_canvas, width=540, height=210)
         self.offline_sim.render()
@@ -681,7 +672,7 @@ class AppUI:
         preview.pack(side="right", fill="y")
         tk.Label(preview, text="LIVE CAMERA / HAND TRACK", bg=BG_CARD, fg=NEON_CYAN,
                  font=("Consolas", 8, "bold")).pack(anchor="w", pady=(0, 7))
-        preview_label = tk.Label(preview, bg="#05080e", width=300, height=225)
+        preview_label = tk.Label(preview, bg=BG_DEEP, width=300, height=225)
         preview_label.pack()
         preview_status = tk.Label(preview, text="Waiting for camera…", bg=BG_CARD, fg=TEXT_MUTED,
                                   font=("Consolas", 8), wraplength=285, justify="left")
@@ -708,7 +699,7 @@ class AppUI:
         tk.Button(footer, text="CLOSE", bg=BG_CARD, fg=TEXT_MUTED, activebackground=BG_CARD_HOVER,
                   font=("Consolas", 8, "bold"), relief="flat", padx=14, pady=8,
                   command=close_briefing).pack(side="left")
-        tk.Button(footer, text="ENTER GAME  →", bg=NEON_PURPLE, fg=TEXT_TITLE, activebackground="#5E17EB",
+        tk.Button(footer, text="ENTER GAME  →", bg=NEON_PURPLE, fg=TEXT_TITLE, activebackground=NEON_PURPLE,
                   font=("Consolas", 9, "bold"), relief="flat", padx=20, pady=8,
                   command=enter_game).pack(side="right")
 
@@ -1067,7 +1058,7 @@ class AppUI:
     def _cam_placeholder(self) -> None:
         ph = np.zeros((VIDEO_H, VIDEO_W, 3), dtype=np.uint8)
         ph[:] = (10, 15, 25)
-        cv2.putText(ph, "NEURAL VISION STREAM", (VIDEO_W // 2 - 130, VIDEO_H // 2 - 15),
+        cv2.putText(ph, "HAND TRACKING / VISION FEED", (VIDEO_W // 2 - 130, VIDEO_H // 2 - 15),
                     cv2.FONT_HERSHEY_DUPLEX, 0.7, (0, 255, 209), 1, cv2.LINE_AA)
         cv2.putText(ph, "Select Game & Press START (Spacebar)", (VIDEO_W // 2 - 160, VIDEO_H // 2 + 18),
                     cv2.FONT_HERSHEY_DUPLEX, 0.45, (130, 145, 175), 1, cv2.LINE_AA)

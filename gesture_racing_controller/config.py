@@ -1,5 +1,5 @@
 """
-config.py — Central Configuration & Settings Manager for Gesture Gaming Controller (v3.0 Ultra)
+config.py — Gesture Racing settings and visual theme
 ══════════════════════════════════════════════════════════════════════════════════════════════
 Centralized parameters for computer vision, multi-hand tracking, adaptive smoothing,
 audio dispatching, settings persistence (settings.json), visual design tokens, and runtime constants.
@@ -30,7 +30,7 @@ DEFAULT_SETTINGS: Dict[str, Any] = {
     "two_hand_enabled": True,
     "air_mouse_sensitivity": 1.6,
     "pwm_steering_enabled": True,
-    "active_theme": "cyberpunk",
+    "active_theme": "gesture_racing",
     "last_selected_game": "🏔  Hill Climb Racing",
     "custom_games": [],
     "custom_keybindings": {},
@@ -116,27 +116,27 @@ PINCH_THRESHOLD_DIST  = 0.065
 # ── Audio Feedback ────────────────────────────────────────────────────────────
 ENABLE_AUDIO_FEEDBACK = bool(RUNTIME_SETTINGS.get("enable_audio_feedback", True))
 
-# ── Cyberpunk / Sci-Fi HUD Theme Tokens ───────────────────────────────────────
-BG_DEEP       = "#060A12"        # Deep void black-blue
-BG_PANEL      = "#0C1322"        # Control panel dark slate
-BG_CARD       = "#131D33"        # Elevated glass card
-BG_CARD_HOVER = "#1B2846"        # Interactive card hover
-BORDER_GLOW   = "#1F2E52"        # Subtle card border
+# ── Gesture Racing theme tokens ──────────────────────────────────────────────
+BG_DEEP       = "#080B12"
+BG_PANEL      = "#0D1119"
+BG_CARD       = "#141A24"
+BG_CARD_HOVER = "#1A222D"
+BORDER_GLOW   = "#35433C"
 
-NEON_CYAN     = "#00FFD1"        # Primary Sci-Fi Cyan
-NEON_PURPLE   = "#8A2BE2"        # Electric Violet
-NEON_PINK     = "#FF007F"        # Synthwave Magenta
-NEON_BLUE     = "#0088FF"        # Hyper Blue
-NEON_GREEN    = "#00E676"        # Active Emerald Green
-NEON_GOLD     = "#FFD700"        # Warning / Calibration Gold
-NEON_RED      = "#FF1744"        # Brake / Alert Red
+NEON_CYAN     = "#66E6DE"
+NEON_PURPLE   = "#B49AFF"
+NEON_PINK     = "#FD76A8"
+NEON_BLUE     = "#7DA6FF"
+NEON_GREEN    = "#D3FC51"
+NEON_GOLD     = "#FF985E"
+NEON_RED      = "#FF647C"
 
-TEXT_TITLE    = "#FFFFFF"
-TEXT_BODY     = "#E2E8F0"
-TEXT_MUTED    = "#8292AD"
-TEXT_DIM      = "#48566E"
+TEXT_TITLE    = "#F0F0E9"
+TEXT_BODY     = "#DEE2DA"
+TEXT_MUTED    = "#858D88"
+TEXT_DIM      = "#505954"
 
 # ── Application Metadata ──────────────────────────────────────────────────────
-APP_NAME    = "GESTURE GAMING CONTROLLER ULTRA"
-APP_VERSION = "3.0 ULTRA"
-APP_SUBTITLE = "Next-Gen Touchless Neural Game Engine"
+APP_NAME    = "GESTURE / RACING"
+APP_VERSION = "1.0"
+APP_SUBTITLE = "WEBCAM GESTURE CONTROLLER"

@@ -1,27 +1,27 @@
-# 🏎️ Gesture-Driven Gaming Control System (v3.0 ULTRA)
+# Gesture / Racing — Windows controller
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB.svg)](https://www.python.org/downloads/)
 [![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green.svg)](https://opencv.org/)
 [![MediaPipe](https://img.shields.io/badge/MediaPipe-0.10.11-orange.svg)](https://developers.google.com/mediapipe)
 [![PyAutoGUI](https://img.shields.io/badge/PyAutoGUI-Active-purple.svg)](https://pyautogui.readthedocs.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A real-time, touchless Human-Computer Interaction (HCI) neural gaming control system that converts 3D hand gestures, dual-hand steering wheel postures, and thumb orientations into ultra-low-latency OS-level keyboard and mouse events.
+A Windows desktop app that tracks hand poses from a webcam and maps gestures to keyboard or mouse input for the focused game. Camera frames are processed locally.
 
 Designed for web & desktop racing games, endless runners, and arcade titles (e.g., *Hill Climb Racing*, *Moto X3M*, *Temple Run 2*, *Subway Surfers*, *Drift Boss*, *Road Fury*).
 
 ---
 
-## 🌟 Key Features (v3.0 Ultra)
+## Features
 
-* **Dual-Hand Steering Wheel Mode:** Hold both hands up in front of the camera to drive with an authentic virtual steering wheel; slope trigonometry calculates turn angles between wrists in real time.
-* **Adaptive Velocity Smoothing & Hysteresis:** Dynamically scales exponential smoothing alpha based on angular speed (instant zero-lag reaction during quick turns, rock-solid stability during straightaways) with $3^\circ$ deadband boundary hysteresis.
+* **Dual-hand steering:** Use both hands to calculate a steering angle from wrist positions.
+* **Adaptive smoothing and hysteresis:** Smooths movement and filters small angle changes to reduce unintended steering.
 * **Built-in 2D Offline Racetrack:** Embedded interactive 2D physics racing simulator directly inside the dashboard to test steering and throttle with lap timing without needing an internet connection.
 * **Picture-in-Picture (PiP) Floating Mini-HUD:** 1-click toggle collapses the dashboard into a sleek, floating, always-on-top compact widget that sits cleanly alongside any full-screen game.
 * **Live Camera Device Hot-Swapping:** Scan and switch between connected webcams (built-in, USB HD cams, OBS Virtual Cam) dynamically without restarting the application.
 * **Air-Mouse & Cursor Emulation:** Move your OS mouse cursor with index finger tracking and click/drag using pinch gestures.
 * **Dedicated Audio Queue Worker:** Non-blocking background sound dispatcher with on/off toggle.
-* **Fast Win32 Window Focus:** Direct ~2ms OS-level window activation.
+* **Win32 Window Focus:** Activates the selected game window through the Windows API.
 * **Persistent Settings (`settings.json`):** Remembers custom calibration angles, sensitivity deadzones, camera indices, audio preferences, and custom games.
 * **Dynamic Custom Game Creator:** Add and customize game profiles, URLs, and keybindings via the UI.
 
@@ -37,7 +37,7 @@ Designed for web & desktop racing games, endless runners, and arcade titles (e.g
                                                                          |
                                                                          v
 +--------------------+      +-----------------------+      +---------------------------+
-| Target Game / App  | <--- | Zero-Delay Dispatcher | <--- | Multi-Feature Engine      |
+| Target Game / App  | <--- | Input Dispatcher | <--- | Multi-Feature Engine      |
 | (Browser, Offline  |      | (Win32 SendInput +    |      | (Dual-Hand Slope, atan2,  |
 |  2D Track, Steam)  |      |  PyAutoGUI & AirMouse)|      |  Adaptive Smoothing, PWM)|
 +--------------------+      +-----------------------+      +---------------------------+
@@ -72,7 +72,7 @@ $$\theta_{t} = (\theta_{t-1} + \alpha \cdot \Delta\theta) \pmod{360}$$
 | :--- | :--- |
 | [`main.py`](main.py) | Application entry point with persistent settings initialization. |
 | [`gesture_engine.py`](gesture_engine.py) | OpenCV multi-cam handler, dual-hand tracking, adaptive smoothing, and HUD renderer. |
-| [`game_controller.py`](game_controller.py) | Zero-delay Win32 SendInput controller with dedicated audio worker & air mouse. |
+| [`game_controller.py`](game_controller.py) | Win32 SendInput controller with dedicated audio worker & air mouse. |
 | [`ui.py`](ui.py) | Tkinter dashboard with PiP floating mode, embedded 2D offline track, and animated telemetry. |
 | [`games.py`](games.py) | Dynamic game catalog, persistent custom games, and control blueprints. |
 | [`config.py`](config.py) | Central configuration and `settings.json` manager. |

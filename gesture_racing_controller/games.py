@@ -1,5 +1,5 @@
 """
-games.py — Curated Game Catalog & Dynamic Profile Manager (v3.0 Ultra)
+games.py — Game catalog and profile manager
 ═════════════════════════════════════════════════════════════════════
 Profiles, URLs, control mappings, dynamic custom game creation,
 and hand gesture blueprints.

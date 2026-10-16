@@ -1,7 +1,7 @@
 """
-main.py — Master Entry Point for Gesture Gaming Controller (v3.0 Ultra)
+main.py — Gesture Racing desktop application entry point
 ═══════════════════════════════════════════════════════════════════════
-Launches the touchless Human-Computer Interaction (HCI) neural game engine,
+Launches the touchless gesture-based game controller,
 initializes the multi-hand vision pipeline and game controller, and manages the Tkinter UI.
 """
 

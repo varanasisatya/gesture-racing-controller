@@ -1,5 +1,5 @@
 """
-test_system.py — Automated Verification & Unit Tests for Gesture Gaming Controller (v3.0 Ultra)
+test_system.py — Gesture Racing unit tests
 ═══════════════════════════════════════════════════════════════════════════════════════════════
 Verifies module imports, single & dual-hand trigonometry, state transitions,
 adaptive smoothing math, settings persistence, and game profile integrity.

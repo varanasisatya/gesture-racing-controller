@@ -1,10 +1,10 @@
 """
-gesture_engine.py — Advanced Multi-Gesture Neural Vision Pipeline (v3.0 Ultra)
+gesture_engine.py — Webcam gesture recognition and hand tracking
 ═════════════════════════════════════════════════════════════════════════════
 High-performance real-time hand-tracking engine combining MediaPipe 21-point
 landmark extraction, dual-hand steering wheel trigonometry, adaptive velocity-scaled
 EMA smoothing, 5-finger bitmask analysis, dynamic swipe velocity estimation,
-air-mouse tracking, camera hot-swapping, and cybernetic holographic HUD rendering.
+air-mouse tracking, camera hot-swapping, and gesture HUD rendering.
 """
 
 import os
@@ -68,7 +68,7 @@ class GestureResult:
 
 
 class GestureEngine:
-    """Manages OpenCV webcam streaming, MediaPipe multi-hand inference, and next-gen gesture logic."""
+    """Manages OpenCV webcam streaming, MediaPipe multi-hand inference, and gesture recognition."""
 
     def __init__(self, camera_index: int = CAMERA_INDEX) -> None:
         self.camera_index = camera_index
@@ -158,14 +158,14 @@ class GestureEngine:
                 self.cap.release()
             except Exception:
                 pass
-        
+
         # Try MSMF (Media Foundation) first as it is often more reliable on modern Windows laptops
         self.cap = cv2.VideoCapture(index, cv2.CAP_MSMF)
         if not self.cap.isOpened():
             self.cap = cv2.VideoCapture(index, cv2.CAP_DSHOW)
         if not self.cap.isOpened():
             self.cap = cv2.VideoCapture(index)
-            
+
         if self.cap.isOpened():
             try:
                 self.cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
@@ -195,7 +195,7 @@ class GestureEngine:
                 temp_cap = cv2.VideoCapture(i, cv2.CAP_DSHOW)
             if not temp_cap.isOpened():
                 temp_cap = cv2.VideoCapture(i)
-            
+
             if temp_cap.isOpened():
                 available.append(i)
                 temp_cap.release()
@@ -556,7 +556,7 @@ class GestureEngine:
                 classified = "thumb_up"
 
             classified = self._stabilize_gesture(classified)
-            self._render_cyberpunk_hud(
+            self._render_gesture_hud(
                 img, lm, wx, wy, target_x, target_y,
                 active_angle, classified, finger_count, is_pinch,
                 calib_prog, handedness_str
@@ -591,9 +591,9 @@ class GestureEngine:
             calib_progress   = calib_prog,
         )
 
-    # ── Cyberpunk Single-Hand HUD Overlay Generator ───────────────────────────
+    # ── Single-hand gesture HUD overlay ────────────────────────────────────────
 
-    def _render_cyberpunk_hud(
+    def _render_gesture_hud(
         self, img: np.ndarray, lm,
         wx: int, wy: int, tx: int, ty: int,
         angle: float, gesture: str, finger_count: int,
@@ -653,7 +653,7 @@ class GestureEngine:
             cv2.circle(img, (w // 2, h // 2), 60, (0, 215, 255), 1, cv2.LINE_AA)
             cv2.drawMarker(img, (w // 2, h // 2), (0, 255, 209), cv2.MARKER_CROSS, 20, 1)
 
-    # ── Dual-Hand Holographic Steering Wheel HUD Overlay ──────────────────────
+    # ── Dual-hand steering HUD overlay ────────────────────────────────────────
 
     def _render_dual_hand_hud(
         self, img: np.ndarray, landmarks_list: List,

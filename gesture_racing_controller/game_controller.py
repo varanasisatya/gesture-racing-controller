@@ -1,7 +1,7 @@
 """
-game_controller.py — Multi-Mode Hardware Input Automation Engine (v3.0 Ultra)
+game_controller.py — Multi-Mode Hardware Input Automation Engine
 ═════════════════════════════════════════════════════════════════════════════
-Translates neural gesture decisions into ultra-low-latency OS keyboard, mouse,
+Translates classified gesture decisions into OS keyboard, mouse,
 and game input events via Windows SendInput API + PyAutoGUI with state-latching,
 dedicated audio queue worker, and fast Win32 window focus.
 """
@@ -176,7 +176,7 @@ class GameController:
 
     @staticmethod
     def focus_window_win32(title_keywords: List[str]) -> bool:
-        """Instantly brings target browser/game window to front via Win32 API (~2ms)."""
+        """Brings the target browser or game window to the front with the Win32 API."""
         if sys.platform != "win32":
             return False
         try:
