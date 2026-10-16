@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1440" y2="760" gradientUnits="userSpaceOnUse"><stop stop-color="#080A0D"/><stop offset=".58" stop-color="#0C1116"/><stop offset="1" stop-color="#10111D"/></linearGradient>
+    <radialGradient id="bloom"><stop stop-color="#C6FF30" stop-opacity=".16"/><stop offset="1" stop-color="#C6FF30" stop-opacity="0"/></radialGradient>
+    <linearGradient id="lime" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#C6FF30"/><stop offset="1" stop-color="#56E8B6"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3AE8DA"/><stop offset="1" stop-color="#7182FF"/></linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="7" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0v32" stroke="#293237" stroke-opacity=".45"/></pattern>
+    <style>
+      .mono{font-family:Consolas,'SFMono-Regular',monospace;letter-spacing:1.2px}
+      .title{font-family:'Arial',sans-serif;font-weight:700;letter-spacing:-1px}
+      .body{font-family:'Arial',sans-serif}
+      .node{fill:#10171A;stroke:#33413E;stroke-width:1.5}
+      .small{font-size:13px;fill:#96A4A0}
+      .label{font-size:15px;font-weight:700;fill:#EFF4EE}
+      .step{font-size:11px;fill:#A8B7B0}
+    </style>
+  </defs>
+  <rect width="1440" height="760" rx="26" fill="url(#bg)"/>
+  <rect width="1440" height="760" rx="26" fill="url(#grid)"/>
+  <ellipse cx="1090" cy="270" rx="470" ry="350" fill="url(#bloom)"/>
+  <g opacity=".7" stroke="#68736E"><path d="M48 94h1344"/><path d="M48 702h1344"/></g>
+  <g class="mono"><text x="62" y="59" fill="#C6FF30" font-size="13">GESTURE / RACING</text><text x="1220" y="59" fill="#9AA7A1" font-size="12">SYSTEM MAP · 01</text></g>
+  <text x="62" y="151" class="title" fill="#EFF4EE" font-size="48">One camera. Two paths to play.</text>
+  <text x="64" y="185" class="body" fill="#9BA9A4" font-size="17">Local hand tracking turns movement into responsive controls in the browser or on Windows.</text>
+
+  <!-- Browser path -->
+  <g class="mono"><rect x="62" y="226" width="128" height="28" rx="14" fill="#C6FF30" fill-opacity=".12" stroke="#C6FF30" stroke-opacity=".55"/><text x="81" y="245" fill="#C6FF30" font-size="11">01 / BROWSER</text></g>
+  <g>
+    <rect class="node" x="62" y="272" width="238" height="116" rx="14"/><rect x="62" y="272" width="4" height="116" rx="2" fill="#C6FF30"/>
+    <circle cx="99" cy="319" r="17" stroke="#C6FF30" stroke-width="2"/><circle cx="99" cy="319" r="6" fill="#C6FF30"/><path d="M77 351c7-10 14-15 22-15s15 5 22 15" stroke="#C6FF30" stroke-width="2" stroke-linecap="round"/>
+    <text class="mono step" x="132" y="313">INPUT</text><text class="body label" x="132" y="339">Browser camera</text><text class="body small" x="132" y="362">Permission stays with the player</text>
+    <rect class="node" x="356" y="272" width="254" height="116" rx="14"/><rect x="356" y="272" width="4" height="116" rx="2" fill="#3AE8DA"/>
+    <g transform="translate(382 302)" stroke="#3AE8DA" stroke-width="2" fill="none" stroke-linecap="round"><path d="M14 55 8 38 4 25q-1-5 3-6 4-1 6 5l3 9V9q0-5 4-5t4 5v21V8q0-5 4-5t4 5v22V14q0-5 4-5t4 5v20q5-8 9-5 3 2 0 8L36 53q-4 6-12 6H19q-3 0-5-4Z"/></g>
+    <text class="mono step" x="453" y="313">PERCEPTION</text><text class="body label" x="453" y="339">Hand landmarks</text><text class="body small" x="453" y="362">MediaPipe · processed locally</text>
+    <rect class="node" x="666" y="272" width="254" height="116" rx="14"/><rect x="666" y="272" width="4" height="116" rx="2" fill="#7182FF"/>
+    <g transform="translate(692 306)" stroke="#7182FF" stroke-width="2" fill="none"><path d="M8 8h34v34H8z"/><path d="m15 26 7 7 14-16" stroke-linecap="round" stroke-linejoin="round"/></g>
+    <text class="mono step" x="763" y="313">INTERPRETATION</text><text class="body label" x="763" y="339">Gesture map</text><text class="body small" x="763" y="362">Pose → game command</text>
+    <path d="M300 330h47m-8-8 8 8-8 8M610 330h47m-8-8 8 8-8 8" stroke="url(#lime)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  </g>
+  <g>
+    <path d="M793 388v30H489v21m304-51v51h66" stroke="#7182FF" stroke-opacity=".65" stroke-width="2" stroke-dasharray="5 6"/>
+    <rect class="node" x="356" y="439" width="266" height="112" rx="14"/><rect x="356" y="439" width="4" height="112" rx="2" fill="#C6FF30"/>
+    <circle cx="400" cy="481" r="13" stroke="#C6FF30" stroke-width="2"/><path d="M394 481h12M400 475v12" stroke="#C6FF30" stroke-width="2" stroke-linecap="round"/>
+    <text class="mono step" x="434" y="478">IN-BROWSER</text><text class="body label" x="434" y="503">Practice track</text><text class="body small" x="382" y="531">Direct controls · no bridge needed</text>
+    <rect class="node" x="726" y="439" width="266" height="112" rx="14"/><rect x="726" y="439" width="4" height="112" rx="2" fill="#FF4CC5"/>
+    <circle cx="770" cy="481" r="15" stroke="#FF4CC5" stroke-width="2"/><path d="M762 481h16M770 473v16" stroke="#FF4CC5" stroke-width="2" stroke-linecap="round"/>
+    <text class="mono step" x="804" y="478">OPTIONAL · LOOPBACK</text><text class="body label" x="804" y="503">Local input bridge</text><text class="body small" x="752" y="531">127.0.0.1 · validates commands</text>
+    <rect class="node" x="1096" y="439" width="282" height="112" rx="14"/><rect x="1096" y="439" width="4" height="112" rx="2" fill="#3AE8DA"/>
+    <path d="M1130 466h28v30h-28zM1136 459h28v30" stroke="#3AE8DA" stroke-width="2" fill="none" stroke-linejoin="round"/>
+    <text class="mono step" x="1178" y="478">OUTPUT</text><text class="body label" x="1178" y="503">Focused PC game</text><text class="body small" x="1122" y="531">Windows keyboard / mouse input</text>
+    <path d="M992 495h99m-8-8 8 8-8 8" stroke="url(#cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  </g>
+
+  <!-- Independent desktop path -->
+  <g class="mono"><rect x="62" y="585" width="128" height="28" rx="14" fill="#3AE8DA" fill-opacity=".10" stroke="#3AE8DA" stroke-opacity=".55"/><text x="81" y="604" fill="#3AE8DA" font-size="11">02 / WINDOWS</text></g>
+  <g class="mono" fill="#9BA9A4" font-size="12">
+    <text x="226" y="604">WEBCAM</text><path d="M302 600h48m-7-6 7 6-7 6" stroke="#3AE8DA" stroke-width="1.5"/>
+    <text x="365" y="604">OPENCV + MEDIAPIPE</text><path d="M535 600h48m-7-6 7 6-7 6" stroke="#3AE8DA" stroke-width="1.5"/>
+    <text x="598" y="604">GESTURE ENGINE</text><path d="M739 600h48m-7-6 7 6-7 6" stroke="#3AE8DA" stroke-width="1.5"/>
+    <text x="802" y="604">KEYBOARD / MOUSE</text><path d="M963 600h48m-7-6 7 6-7 6" stroke="#3AE8DA" stroke-width="1.5"/>
+    <text x="1026" y="604">GAME IN FOCUS</text>
+  </g>
+  <text x="62" y="672" class="mono" fill="#77847F" font-size="11">CAMERA FRAMES STAY ON DEVICE  ·  BRIDGE IS OPTIONAL AND RUNS ON THE PLAYER'S PC</text>
+  <circle cx="1362" cy="669" r="5" fill="#C6FF30" filter="url(#glow)"/>
+</svg>
